@@ -6,8 +6,8 @@
 #                               Advent of Code 2015 - Solutions of Problems                                     #
 #                                                                                                               #
 #   Author:     Marcel Krause                                                                                   #
-#   Date:       20.01.2019                                                                                      #
-#   Copyright:  Copyright (C) 2019, Marcel Krause                                                               #
+#   Date:       11.01.2021                                                                                      #
+#   Copyright:  Copyright (C) 2021, Marcel Krause                                                               #
 #   License:    GNU General Public License (GNU GPL-3.0-or-later)                                               #
 #                                                                                                               #
 #               This program is released under GNU General Public License (GNU GPL-3.0-or-later).               #
@@ -23,27 +23,12 @@
 #                                                                                                               #
  ###############################################################################################################
 
+
 #------------------------------#
 #         Import Modules       #
 #------------------------------#
 import sys
-# import re
 import json
-# import numpy as np
-# import os
-# from shutil import copyfile, rmtree
-# from math import pi, sqrt
-# import random
-# import subprocess
-
-#------------------------------#
-#           Settings           #
-#------------------------------#
-
-
-#------------------------------#
-#          Functions           #
-#------------------------------#
 
 
 #----------------------------#
@@ -65,13 +50,54 @@ if __name__ == "__main__":
 	with open('Day12-01_input.dat', 'r', encoding='utf-8') as content_file:
 		data = json.load(content_file)
 
-		currObject = data
-		currIndices = list(data)
-		# for currIndex in currIndices:
-		# 	print(json.dumps(data[currIndex], sort_keys=False, indent=2))
-		print(json.dumps(data["c"], sort_keys=False, indent=2))
+		# print(json.dumps(currObject['e'], sort_keys=False, indent=2))
+		allObjectsDone = False
+		fullSum = 0
+
+		currObjects = [data]
+
+		while True:
+			currSubObjectCollector = []
+			
+			for currObject in currObjects:
+				currObjectSum = 0
+				skipCurrObject = False
+
+				# Discard the current object if it contains a value 'red'
+				if isinstance(currObject, dict):
+					for val in currObject.values():
+						if val == 'red':
+							skipCurrObject = True
+				if not skipCurrObject:
+					# If the current object is an integer, directly add it to the sum of integers
+					if isinstance(currObject, int):
+						currObjectSum += currObject
+					
+					# If the current object is a list, traverse through the list and add up integers that are in the list; add sub-lists and dicts to another list for the next iteration
+					if isinstance(currObject, list):
+						for val in currObject:
+							if isinstance(val, int):
+								currObjectSum += val
+							elif isinstance(val, dict) or isinstance(val, list):
+								currSubObjectCollector.append(val)
+					
+					# If the current object is a list, traverse through the list and add up integers that are in the list; add sub-lists and dicts to another list for the next iteration
+					if isinstance(currObject, dict):
+						for val in currObject.values():
+							if isinstance(val, int):
+								currObjectSum += val
+							elif isinstance(val, dict) or isinstance(val, list):
+								currSubObjectCollector.append(val)
+					
+					# Add the object sum to the overall sum
+					fullSum += currObjectSum
+
+			# In case no sub-lists or dicts were found, we are done
+			if len(currSubObjectCollector) == 0:
+				break
+			else:
+				currObjects = currSubObjectCollector
 		
-		# print(json.dumps(data, sort_keys=False, indent=2))
-		# print()
+		print('The sum of all relevant items is given by {}.'.format(fullSum))
 
 	sys.exit()

@@ -7,7 +7,7 @@
 #                                                                                                               #
 #   Author:     Marcel Krause                                                                                   #
 #   Date:       28.01.2020                                                                                      #
-#   Copyright:  Copyright (C) 2019, Marcel Krause                                                               #
+#   Copyright:  Copyright (C) 2021, Marcel Krause                                                               #
 #   License:    GNU General Public License (GNU GPL-3.0-or-later)                                               #
 #                                                                                                               #
 #               This program is released under GNU General Public License (GNU GPL-3.0-or-later).               #
@@ -23,27 +23,12 @@
 #                                                                                                               #
  ###############################################################################################################
 
+
 #------------------------------#
 #         Import Modules       #
 #------------------------------#
 import sys
 import re
-# import json
-# import numpy as np
-# import os
-# from shutil import copyfile, rmtree
-# from math import pi, sqrt
-# import random
-# import subprocess
-
-#------------------------------#
-#           Settings           #
-#------------------------------#
-
-
-#------------------------------#
-#          Functions           #
-#------------------------------#
 
 
 #----------------------------#
@@ -72,7 +57,6 @@ class Reindeer:
 				break
 
 		return(fullDistance)
-
 
 
 #----------------------------#

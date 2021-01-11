@@ -7,7 +7,7 @@
 #                                                                                                               #
 #   Author:     Marcel Krause                                                                                   #
 #   Date:       30.12.2018                                                                                      #
-#   Copyright:  Copyright (C) 2018, Marcel Krause                                                               #
+#   Copyright:  Copyright (C) 2021, Marcel Krause                                                               #
 #   License:    GNU General Public License (GNU GPL-3.0-or-later)                                               #
 #                                                                                                               #
 #               This program is released under GNU General Public License (GNU GPL-3.0-or-later).               #
@@ -23,26 +23,13 @@
 #                                                                                                               #
  ###############################################################################################################
 
+
 #------------------------------#
 #         Import Modules       #
 #------------------------------#
 import sys
 import re
 import numpy as np
-# import os
-# from shutil import copyfile, rmtree
-# from math import pi, sqrt
-# import random
-# import subprocess
-
-#------------------------------#
-#           Settings           #
-#------------------------------#
-
-
-#------------------------------#
-#          Functions           #
-#------------------------------#
 
 
 #----------------------------#
